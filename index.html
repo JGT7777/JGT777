@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La web de JGT: MollyKao, WorKat, programas en Python e impresión 3D.">
+    <title>JGT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="noise"></div>
+<div class="scanlines"></div>
+
+<header class="site-header">
+    <a class="brand" href="#inicio" aria-label="JGT, volver al inicio">
+        <span class="brand-mark">J/</span>
+        <span>JGT<span class="accent">_</span></span>
+    </a>
+    <nav aria-label="Navegación principal">
+        <a class="active" href="#inicio">/inicio</a>
+        <a href="#proyectos">/proyectos</a>
+        <a href="#sobre-mi">/sobre-mi</a>
+        <a href="https://github.com/JGT7777" target="_blank" rel="noreferrer">/github ↗</a>
+    </nav>
+</header>
+
+<main>
+    <section id="inicio" class="hero shell">
+        <div class="hero-copy">
+            <p class="eyebrow"><span class="status-dot"></span> conexión estable / usuario: JGT7777</p>
+            <h1>Acceso a<br><em>JGT</em></h1>
+            <div class="hero-actions">
+                <a class="button button-primary" href="#proyectos">Explorar proyectos <span>↓</span></a>
+                <a class="button button-quiet" href="https://github.com/JGT7777" target="_blank" rel="noreferrer">Ver GitHub <span>↗</span></a>
+            </div>
+        </div>
+        <div class="terminal" aria-label="Estado del laboratorio">
+            <div class="terminal-bar"><span></span><span></span><span></span><b>jgt@lab:~</b></div>
+            <div class="terminal-body">
+                <p><i>01</i> <strong>$ whoami</strong></p>
+                <p class="terminal-green">JGT</p>
+                <p><i>02</i> <strong>$ ./estado_actual.sh</strong></p>
+                <p class="terminal-green">[OK] MollyKao en desarrollo</p>
+                <p class="terminal-green">[OK] WorKat casi listo para Google Play</p>
+                <p class="terminal-green">[OK] Venta de impresiones 3D activo</p>
+                <p><i>03</i> <strong>$ _</strong><span class="cursor"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats shell reveal" aria-label="Resumen de actividad">
+        <div class="stat"><strong>03</strong><span>robots creados</span></div>
+        <div class="stat"><strong>04</strong><span>ordenadores vulnerados</span></div>
+        <div class="stat"><strong>01</strong><span>móvil vulnerado</span></div>
+        <div class="stat"><strong>78</strong><span>programas en Python</span></div>
+        <div class="stat"><strong>07</strong><span>apps básicas</span></div>
+        <div class="stat"><strong>01</strong><span>app completa</span></div>
+    </section>
+
+    <section class="system-strip shell reveal" aria-label="Actividad del sistema">
+        <span><b>NETWORK</b> SECURE</span><span><b>UPTIME</b> 24/7</span><span><b>PROJECTS</b> 014</span><span class="system-command">$ ./keep_building.exe <i>_</i></span>
+    </section>
+
+    <section id="proyectos" class="section shell">
+        <div class="section-heading">
+            <p class="eyebrow">01 / archivos abiertos</p>
+            <h2>Lo que tengo<br><em>entre manos.</em></h2>
+        </div>
+        <div class="project-grid">
+            <article class="project project-featured reveal">
+                <div class="project-visual robot-visual"><span class="crosshair">+</span><span class="robot-eye"></span><span class="robot-label">MK-01</span></div>
+                <div class="project-content"><p class="project-number">01 — ROBÓTICA / ACTIVO</p><h3>MollyKao</h3><p>Mi proyecto más personal. Lo voy montando poco a poco, probando piezas y viendo qué puede llegar a hacer.</p><a href="https://github.com/JGT7777" target="_blank" rel="noreferrer">mirar mis repositorios <span>↗</span></a></div>
+            </article>
+            <article class="project reveal reveal-delay-1">
+                <div class="project-visual app-visual"><span class="app-symbol">W</span><span class="project-label">BUILD 0.1</span></div>
+                <div class="project-content"><p class="project-number">02 — APP MÓVIL / PRÓXIMO</p><h3>WorKat</h3><p>La app que he hecho completa por mi cuenta. Todavía la estoy preparando antes de subirla a Google Play.</p><span class="tag">a punto</span></div>
+            </article>
+            <article class="project reveal reveal-delay-2">
+                <div class="project-visual print-visual"><span class="cube cube-a"></span><span class="cube cube-b"></span><span class="project-label">LAYER / 03</span></div>
+                <div class="project-content"><p class="project-number">03 — Impresion 3D / ACTIVO</p><h3>Impresión 3D</h3><p>...</p><span class="tag tag-light">en funcionamiento</span></div>
+            </article>
+        </div>
+    </section>
+
+  
+    <section class="contact shell reveal">
+        <div><p class="eyebrow">02 / sigue</p><h2>Si quieres ver<br><em>más cosas.</em></h2></div>
+        <div class="contact-links"><a class="contact-link" href="https://github.com/JGT7777" target="_blank" rel="noreferrer" aria-label="Abrir todos mis repositorios de GitHub"><span>Todos mis repositorios</span><b>↗</b></a><a class="contact-link" href="https://www.youtube.com/@JGT777" target="_blank" rel="noreferrer" aria-label="Abrir mi canal de YouTube"><span>Mi YouTube</span><b>↗</b></a></div>
+    </section>
+</main>
+
+<aside class="music-player" aria-label="Reproductor de música">
+    <div class="music-heading">
+        <span class="music-signal"></span>
+        <span>JGT RADIO / <b id="music-status">ESPERANDO PISTA</b></span>
+    </div>
+    <div class="music-main">
+        <button class="music-button" id="previous-track" type="button" aria-label="Canción anterior">|&lt;</button>
+        <button class="music-button music-play" id="play-track" type="button" aria-label="Reproducir música">▶</button>
+        <button class="music-button" id="next-track" type="button" aria-label="Siguiente canción">&gt;|</button>
+        <div class="music-now-playing"><strong id="track-name">If The Sun Burns Out Tonight (feat. Oli Sykes &amp; Courtney LaPlante).mp3</strong><span id="track-time">00:00 / 00:00</span></div>
+    </div>
+    <input class="music-progress" id="music-progress" type="range" min="0" max="100" value="0" aria-label="Progreso de la canción">
+    <div class="track-list" role="list" aria-label="Lista de canciones">
+        <button class="track active" type="button" data-track="0">01 / If The Sun Burns Out Tonight</button>
+        <button class="track" type="button" data-track="1">02 / cancion-2.mp3</button>
+        <button class="track" type="button" data-track="2">03 / cancion-3.mp3</button>
+        <button class="track" type="button" data-track="3">04 / cancion-4.mp3</button>
+    </div>
+</aside>
+
+<script src="scroll.js"></script>
+
+<footer>
+    <p>© 2026 JGT</p>
+    <p class="footer-code">STATUS: <span>ONLINE</span></p>
+</footer>
+</body>
+</html>
