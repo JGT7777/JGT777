@@ -9,6 +9,16 @@
 </head>
 
 <body>
+<div class="retro-boot" id="retro-boot" aria-label="Iniciando JGT OS">
+    <div class="boot-screen">
+        <p class="boot-brand">JGT//OS <span>v1.0.8</span></p>
+        <p>BIOS CHECK ............ <b>OK</b></p>
+        <p>MEMORY TEST ........... <b>640K OK</b></p>
+        <p>LOADING RETRO DESKTOP . <b>OK</b></p>
+        <div class="boot-progress"><span></span></div>
+        <p class="boot-prompt">PRESS ANY KEY TO CONTINUE<span class="cursor"></span></p>
+    </div>
+</div>
 <div class="noise"></div>
 <div class="scanlines"></div>
 
@@ -91,6 +101,11 @@
 </main>
 
 <aside class="music-player" aria-label="Reproductor de música">
+    <div class="window-titlebar">
+        <span class="window-icon">♪</span>
+        <b>JGT_RADIO.EXE</b>
+        <div class="window-controls"><span>_</span><span>□</span><span>×</span></div>
+    </div>
     <div class="music-heading">
         <span class="music-signal"></span>
         <span>JGT RADIO / <b id="music-status">ESPERANDO PISTA</b></span>
@@ -102,11 +117,12 @@
         <div class="music-now-playing"><strong id="track-name">If The Sun Burns Out Tonight (feat. Oli Sykes &amp; Courtney LaPlante).mp3</strong><span id="track-time">00:00 / 00:00</span></div>
     </div>
     <input class="music-progress" id="music-progress" type="range" min="0" max="100" value="0" aria-label="Progreso de la canción">
+    <div class="music-wave" id="music-wave" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
     <div class="track-list" role="list" aria-label="Lista de canciones">
         <button class="track active" type="button" data-track="0">01 / If The Sun Burns Out Tonight</button>
-        <button class="track" type="button" data-track="1">02 / cancion-2.mp3</button>
-        <button class="track" type="button" data-track="2">03 / cancion-3.mp3</button>
-        <button class="track" type="button" data-track="3">04 / cancion-4.mp3</button>
     </div>
 </aside>
 
