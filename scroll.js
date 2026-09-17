@@ -88,6 +88,11 @@ const playTrack = () => {
     });
 };
 
+retroBoot.addEventListener('click', playTrack, { once: true });
+document.addEventListener('pointerdown', () => {
+    if (audio.paused && !audio.error) playTrack();
+}, { once: true });
+
 const updateVisualizer = () => {
     if (!analyser || audio.paused) return;
     analyser.getByteFrequencyData(frequencyData);
