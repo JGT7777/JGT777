@@ -162,72 +162,40 @@ brand.addEventListener('click', () => {
     }
 });
 
-/* ===== Selector de juegos ===== */
+/* ===== Selector de juegos =====
+   Las portadas van en la carpeta covers/ con el nombre de cada juego.
+   Si una portada no existe, se muestra el nombre del juego. */
 const games = [
-    { title: 'Numbery', genre: 'Puzzle', color: '#8cc4ff', url: 'https://jgt7777.github.io/Number-detective/', desc: 'Detective de números: descubre el código con las pistas que te da el juego.' },
-    { title: 'Jumpcat', genre: 'Plataformas', color: '#ff8f73', url: 'https://jgt7777.github.io/Jumpcat/', desc: 'Un gato, mucha altura y ningún paracaídas. Salta sin caer.' },
-    { title: 'Cat Gambling', genre: 'Suerte', color: '#ffc83d', url: 'https://jgt7777.github.io/Cat-Gambling/', desc: 'Apuesta con tu gato y a ver si la suerte está de tu lado.' },
-    { title: 'Cat Clicker', genre: 'Clicker', color: '#7bd9ae', url: 'https://jgt7777.github.io/CatClicker/', desc: 'Haz clic, mejora y deja que los gatos trabajen por ti.' }
+    { title: 'Numbery', genre: 'Puzzle', color: '#8cc4ff', cover: 'covers/numbery.png', url: 'https://jgt7777.github.io/Number-detective/', desc: 'Detective de números: descubre el código con las pistas que te da el juego.' },
+    { title: 'Jumpcat', genre: 'Plataformas', color: '#ff8f73', cover: 'covers/jumpcat.png', url: 'https://jgt7777.github.io/Jumpcat/', desc: 'Un gato, mucha altura y ningún paracaídas. Salta sin caer.' },
+    { title: 'Cat Gambling', genre: 'Suerte', color: '#ffc83d', cover: 'covers/cat-gambling.png', url: 'https://jgt7777.github.io/Cat-Gambling/', desc: 'Apuesta con tu gato y a ver si la suerte está de tu lado.' },
+    { title: 'Cat Clicker', genre: 'Clicker', color: '#7bd9ae', cover: 'covers/cat-clicker.png', url: 'https://jgt7777.github.io/CatClicker/', desc: 'Haz clic, mejora y deja que los gatos trabajen por ti.' }
 ];
 const selectBox = document.querySelector('#select'), crt = document.querySelector('#crt');
-const items = [...document.querySelectorAll('.menu-item')], scenes = [...document.querySelectorAll('.scene')];
+const items = [...document.querySelectorAll('.menu-item')];
 const startBtn = document.querySelector('#crt-start');
-const numGrid = document.querySelector('#num-grid'), reels = document.querySelector('.reels'), orb = document.querySelector('.orb');
-const clickCount = document.querySelector('#click-count');
-for (let i = 0; i < 32; i++) numGrid.appendChild(document.createElement('span'));
-let timers = [], selected = -1, clicks = 0;
-
-const sceneRunners = [
-    () => { // Numbery: números que cambian y se iluminan
-        const cells = [...numGrid.children];
-        const tick = () => cells.forEach((c) => { c.textContent = Math.floor(Math.random() * 10); c.classList.toggle('hot', Math.random() < 0.12); });
-        tick();
-        return [setInterval(tick, 260)];
-    },
-    () => [], // Jumpcat: solo CSS
-    () => { // Cat Gambling: tragaperras
-        const symbols = ['7', '$', '♥', '◆'], spans = [...reels.children];
-        const spin = () => {
-            reels.classList.remove('win');
-            const iv = setInterval(() => spans.forEach((s) => { s.textContent = symbols[Math.floor(Math.random() * symbols.length)]; }), 70);
-            setTimeout(() => { clearInterval(iv); spans.forEach((s) => { s.textContent = '7'; }); reels.classList.add('win'); }, 1300);
-        };
-        spin();
-        return [setInterval(spin, 3200)];
-    },
-    () => { // Cat Clicker: contador que sube
-        const click = () => {
-            clicks += Math.ceil(Math.random() * 3);
-            clickCount.textContent = clicks;
-            orb.classList.add('hit');
-            setTimeout(() => orb.classList.remove('hit'), 80);
-            const p = document.createElement('span');
-            p.className = 'plus';
-            p.textContent = '+1';
-            p.style.left = `${46 + Math.random() * 8}%`;
-            p.style.top = '30%';
-            scenes[3].appendChild(p);
-            setTimeout(() => p.remove(), 800);
-        };
-        return [setInterval(click, 380)];
-    }
-];
+const cover = document.querySelector('#crt-cover'), fallback = document.querySelector('#crt-fallback');
+let selected = -1;
 
 function selectGame(i, userAction = true) {
     if (i === selected) return;
-    timers.forEach(clearInterval);
     const g = games[i];
     selected = i;
     selectBox.style.setProperty('--c', g.color);
     items.forEach((el, n) => el.classList.toggle('is-selected', n === i));
-    scenes.forEach((el, n) => el.classList.toggle('is-on', n === i));
     document.querySelector('#crt-title').textContent = g.title;
+    document.querySelector('#crt-fb-title').textContent = g.title;
     document.querySelector('#crt-genre').textContent = g.genre;
     document.querySelector('#crt-desc').textContent = g.desc;
+    cover.hidden = true;
+    fallback.hidden = false;
+    cover.onload = () => { cover.hidden = false; fallback.hidden = true; };
+    cover.onerror = () => { cover.hidden = true; fallback.hidden = false; };
+    cover.alt = `Portada de ${g.title}`;
+    cover.src = g.cover;
     startBtn.href = g.url;
     startBtn.setAttribute('aria-label', `Jugar a ${g.title}`);
     if (userAction) { crt.classList.add('is-switching'); setTimeout(() => crt.classList.remove('is-switching'), 300); }
-    timers = sceneRunners[i]();
 }
 items.forEach((el, i) => {
     el.addEventListener('mouseenter', () => selectGame(i));
@@ -241,83 +209,3 @@ items.forEach((el, i) => {
     });
 });
 selectGame(0, false);
-
-/* ===== Reproductor ===== */
-const tracks = [{ source: 'music/jgt-radio.mp3', label: 'If The Sun Burns Out Tonight (feat. Oli Sykes & Courtney LaPlante).mp3' }];
-const audio = new Audio();
-audio.preload = 'metadata';
-const playerBox = document.querySelector('#music-player');
-const playButton = document.querySelector('#play-track');
-const progress = document.querySelector('#music-progress');
-const trackName = document.querySelector('#track-name');
-const trackTime = document.querySelector('#track-time');
-const musicStatus = document.querySelector('#music-status');
-const trackButtons = document.querySelectorAll('.track');
-const waveBars = document.querySelectorAll('#music-wave span');
-let currentTrack = 0, audioContext, analyser, frequencyData, vizFrame;
-document.querySelector('#min-player').addEventListener('click', () => playerBox.classList.toggle('is-min'));
-
-const fmt = (s) => Number.isFinite(s) ? `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '00:00';
-const loadTrack = (i) => {
-    currentTrack = i;
-    audio.src = tracks[i].source;
-    trackName.textContent = tracks[i].label;
-    trackButtons.forEach((b, n) => b.classList.toggle('active', n === i));
-    progress.value = 0;
-    trackTime.textContent = '00:00 / 00:00';
-    musicStatus.textContent = 'Lista';
-};
-const syncTime = () => {
-    const d = Number.isFinite(audio.duration) ? audio.duration : 0;
-    progress.value = d ? (audio.currentTime / d) * 100 : 0;
-    trackTime.textContent = `${fmt(audio.currentTime)} / ${fmt(d)}`;
-};
-const setUI = (playing) => {
-    playButton.textContent = playing ? '||' : '▶';
-    playButton.setAttribute('aria-label', playing ? 'Pausar música' : 'Reproducir música');
-};
-const resetWave = () => waveBars.forEach((bar) => bar.style.setProperty('--wave-height', '4px'));
-const vizLoop = () => {
-    if (!analyser || audio.paused) return;
-    analyser.getByteFrequencyData(frequencyData);
-    waveBars.forEach((bar, i) => {
-        const idx = Math.min(frequencyData.length - 1, Math.floor((i / waveBars.length) * frequencyData.length));
-        bar.style.setProperty('--wave-height', `${Math.max(4, Math.round(4 + (frequencyData[idx] / 255) * 24))}px`);
-    });
-    vizFrame = requestAnimationFrame(vizLoop);
-};
-const startViz = () => {
-    const AC = window.AudioContext || window.webkitAudioContext;
-    if (!AC) return;
-    if (!audioContext) {
-        audioContext = new AC();
-        analyser = audioContext.createAnalyser();
-        analyser.fftSize = 256;
-        frequencyData = new Uint8Array(analyser.frequencyBinCount);
-        audioContext.createMediaElementSource(audio).connect(analyser);
-        analyser.connect(audioContext.destination);
-    }
-    audioContext.resume().catch(() => {});
-    cancelAnimationFrame(vizFrame);
-    vizLoop();
-};
-const play = () => audio.play().then(() => {
-    setUI(true);
-    musicStatus.textContent = 'Sonando';
-    startViz();
-}).catch(() => { musicStatus.textContent = audio.error ? 'Audio no disponible' : 'Pulsa play'; });
-
-playButton.addEventListener('click', () => {
-    if (audio.paused) play();
-    else { audio.pause(); setUI(false); musicStatus.textContent = 'Pausada'; }
-});
-document.querySelector('#previous-track').addEventListener('click', () => { loadTrack((currentTrack + tracks.length - 1) % tracks.length); play(); });
-document.querySelector('#next-track').addEventListener('click', () => { loadTrack((currentTrack + 1) % tracks.length); play(); });
-trackButtons.forEach((b) => b.addEventListener('click', () => { loadTrack(Number(b.dataset.track)); play(); }));
-progress.addEventListener('input', () => { if (audio.duration) audio.currentTime = (progress.value / 100) * audio.duration; });
-['timeupdate', 'loadedmetadata', 'durationchange'].forEach((ev) => audio.addEventListener(ev, syncTime));
-audio.addEventListener('ended', () => { loadTrack((currentTrack + 1) % tracks.length); play(); });
-audio.addEventListener('pause', () => { cancelAnimationFrame(vizFrame); resetWave(); });
-audio.addEventListener('error', () => { musicStatus.textContent = 'Audio no disponible'; trackTime.textContent = '00:00 / 00:00'; });
-
-loadTrack(0);

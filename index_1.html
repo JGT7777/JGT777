@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="La web de JGT: juegos, MollyKao, WorKat, programas en Python e impresión 3D.">
+<meta name="theme-color" content="#0c0716" id="meta-theme">
+<title>JGT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+document.documentElement.classList.add('js');
+try { document.documentElement.dataset.theme = localStorage.getItem('jgt-theme') || 'neon'; }
+catch (e) { document.documentElement.dataset.theme = 'neon'; }
+</script>
+</head>
+<body>
+<div class="scroll-bar" id="scroll-bar"></div>
+
+<header class="site-header">
+  <a class="brand" href="#inicio" id="brand" aria-label="JGT, volver al inicio">JGT</a>
+  <nav aria-label="Navegación principal">
+    <a class="active" href="#inicio">Inicio</a>
+    <a href="#juegos">Juegos</a>
+    <a href="#mollykao">MollyKao</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#certificados">Certificados</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="https://github.com/JGT7777" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </nav>
+  <div class="themes" role="group" aria-label="Elegir tema de la web">
+    <button type="button" data-theme="neon" aria-pressed="true"><i></i>Neón</button>
+    <button type="button" data-theme="papel" aria-pressed="false"><i></i>Papel</button>
+    <button type="button" data-theme="chicle" aria-pressed="false"><i></i>Chicle</button>
+  </div>
+</header>
+
+<main>
+  <section id="inicio" class="hero shell">
+    <div class="hero-copy">
+      <p class="kicker">Hola, soy JGT</p>
+      <h1>Hago juegos, robots y cosas raras con <mark>código</mark>.</h1>
+      <p class="hero-text">Aquí tienes mis juegos, mi empresa MollyKao, mi app WorKat y todo lo que voy montando con Python y con la impresora 3D.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#juegos">Jugar ahora <span>→</span></a>
+        <a class="btn" href="#proyectos">Ver proyectos <span>↓</span></a>
+      </div>
+    </div>
+    <div class="now-wrap">
+      <div class="now-card">
+        <div class="now-bar"><span>Ahora mismo</span><span class="live"><i></i>en directo</span></div>
+        <ul class="now-list">
+          <li><span class="pill pill-lilac">en desarrollo</span><b>MollyKao</b></li>
+          <li><span class="pill pill-tomato">a punto</span><b>WorKat para Google Play</b></li>
+          <li><span class="pill pill-mint">online</span><b>4 juegos para jugar</b></li>
+          <li><span class="pill pill-sun">activo</span><b>Impresiones 3D a la venta</b></li>
+        </ul>
+      </div>
+      <div class="sticker sticker-a" aria-hidden="true">78<small>programas<br>en Python</small></div>
+      <div class="sticker sticker-b" aria-hidden="true">=^.^=</div>
+    </div>
+  </section>
+
+  <section class="stats shell reveal" aria-label="Resumen de actividad">
+    <div class="stat"><strong data-count="3">03</strong><span>robots creados</span></div>
+    <div class="stat"><strong data-count="78">78</strong><span>programas en Python</span></div>
+    <div class="stat"><strong data-count="7">07</strong><span>apps básicas</span></div>
+    <div class="stat"><strong data-count="4">04</strong><span>juegos online</span></div>
+  </section>
+
+  <section id="juegos" class="section shell">
+    <div class="section-heading reveal">
+      <div><p class="kicker">01 · Juegos</p><h2>Mis juegos</h2></div>
+      <p class="section-note">Elige con el ratón o con las flechas ↑ ↓ y pulsa Jugar. Se abren en otra pestaña.</p>
+    </div>
+    <div class="select reveal" id="select" style="--c:#8cc4ff">
+      <ul class="menu" id="menu" aria-label="Lista de juegos">
+        <li><button class="menu-item is-selected" type="button" data-i="0"><span class="m-num">01</span><span class="m-name">Numbery</span><small>Puzzle</small></button></li>
+        <li><button class="menu-item" type="button" data-i="1"><span class="m-num">02</span><span class="m-name">Jumpcat</span><small>Plataformas</small></button></li>
+        <li><button class="menu-item" type="button" data-i="2"><span class="m-num">03</span><span class="m-name">Cat Gambling</span><small>Suerte</small></button></li>
+        <li><button class="menu-item" type="button" data-i="3"><span class="m-num">04</span><span class="m-name">Cat Clicker</span><small>Clicker</small></button></li>
+      </ul>
+      <div class="crt" id="crt">
+        <div class="crt-top"><b id="crt-title">Numbery</b><span id="crt-genre">Puzzle</span></div>
+        <div class="crt-screen">
+          <img class="cover" id="crt-cover" alt="" hidden>
+          <div class="cover-fallback" id="crt-fallback"><b id="crt-fb-title">Numbery</b><small>portada próximamente</small></div>
+        </div>
+        <p class="crt-desc" id="crt-desc"></p>
+        <a class="btn btn-primary" id="crt-start" href="#" target="_blank" rel="noreferrer">Jugar <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="mollykao" class="company shell reveal">
+    <div class="company-copy">
+      <p class="kicker">02 · Mi empresa</p>
+      <h2>MollyKao</h2>
+      <p class="company-sub">La colección</p>
+      <p>Mi empresa y mi proyecto más personal. Entra a la tienda y mira la colección completa.</p>
+      <a class="btn btn-primary" href="https://jgt7777.github.io/MollyKao/" target="_blank" rel="noreferrer">Abrir MollyKao <span>↗</span></a>
+    </div>
+    <div class="company-visual" aria-hidden="true">
+      <div class="bot"><i class="bot-antenna"></i><div class="bot-face"><span class="eye"></span><span class="eye"></span></div></div>
+      <span class="company-label">MK-01</span>
+    </div>
+  </section>
+
+  <section id="proyectos" class="section shell">
+    <div class="section-heading reveal"><div><p class="kicker">03 · Proyectos</p><h2>Lo que tengo entre manos</h2></div></div>
+    <div class="project-grid">
+      <article class="project reveal"><div class="project-visual v-app"><span class="app-symbol">W</span></div><div class="project-content"><p class="project-number">App móvil · próximamente</p><h3>WorKat</h3><p>La app que he hecho completa por mi cuenta. Todavía la estoy preparando antes de subirla a Google Play.</p><span class="tag">a punto</span></div></article>
+      <article class="project reveal reveal-delay-1"><div class="project-visual v-print"><span class="cube cube-a"></span><span class="cube cube-b"></span></div><div class="project-content"><p class="project-number">Impresión 3D · activo</p><h3>Impresión 3D</h3><p>Diseño y vendo piezas impresas en 3D, capa a capa.</p><span class="tag tag-mint">en funcionamiento</span></div></article>
+      <article class="project reveal reveal-delay-2"><div class="project-visual v-code"><span class="code-symbol">&gt;&gt;&gt;</span></div><div class="project-content"><p class="project-number">Código · activo</p><h3>Python</h3><p>78 programas y contando. Todo el código está en mi GitHub.</p><a href="https://github.com/JGT7777" target="_blank" rel="noreferrer">Mirar repositorios ↗</a></div></article>
+    </div>
+  </section>
+
+  <section id="certificados" class="section shell">
+    <div class="section-heading reveal">
+      <div><p class="kicker">04 · Certificados</p><h2>Lo que he aprendido</h2></div>
+      <p class="section-note">Cursos y títulos que he ido consiguiendo por el camino.</p>
+    </div>
+    <div class="cert-grid reveal" id="cert-grid"></div>
+  </section>
+
+  <section id="gato" class="oracle shell reveal">
+    <div class="oracle-copy">
+      <p class="kicker">Extra · Sin utilidad real</p>
+      <h2>El gato oráculo</h2>
+      <p>Hazle una pregunta importante. Responde cuando le apetece y casi nunca ayuda.</p>
+      <form class="oracle-form" id="oracle-form" autocomplete="off">
+        <label class="sr-only" for="oracle-q">Tu pregunta para el gato</label>
+        <input id="oracle-q" type="text" maxlength="80" placeholder="¿Compilará a la primera?">
+        <button class="btn btn-primary" type="submit">Preguntar <span>?</span></button>
+      </form>
+    </div>
+    <div class="oracle-cat" id="oracle-cat">
+      <div class="oracle-face" aria-hidden="true">=^.^=</div>
+      <p class="oracle-bubble" id="oracle-answer" aria-live="polite">Haz tu pregunta…</p>
+    </div>
+  </section>
+
+  <section id="sobre-mi" class="about shell reveal">
+    <div><p class="kicker">05 · Sobre mí</p><h2>Siempre estoy construyendo algo.</h2></div>
+    <div class="about-copy">
+      <p>Soy JGT. Programo, monto robots, hago juegos y apps, e imprimo cosas en 3D. Casi todo empieza como una idea rara y acaba siendo algo que puedes probar.</p>
+      <ul class="chips" aria-label="Lo que hago">
+        <li>Python</li><li>Robots</li><li>Juegos</li><li>Apps</li><li>Impresión 3D</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact shell reveal">
+    <div><p class="kicker">Más cosas</p><h2>Si quieres ver más.</h2></div>
+    <div class="contact-links">
+      <a class="contact-link" href="https://github.com/JGT7777" target="_blank" rel="noreferrer" aria-label="Abrir todos mis repositorios de GitHub"><span>Todos mis repositorios</span><b>↗</b></a>
+      <a class="contact-link" href="https://www.youtube.com/@JGT777" target="_blank" rel="noreferrer" aria-label="Abrir mi canal de YouTube"><span>Mi YouTube</span><b>↗</b></a>
+    </div>
+  </section>
+</main>
+
+<footer><p>© 2026 JGT</p><p>Hecho a mano, sin plantillas.</p></footer>
+
+<script src="scroll.js"></script>
+</body>
+</html>
