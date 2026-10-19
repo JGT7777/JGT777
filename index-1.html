@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="La web de JGT: juegos, MollyKao, WorKat e impresión 3D.">
+<meta name="theme-color" content="#070b0a">
+<title>JGT</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="intro-lock">
+<div class="intro" id="intro" role="presentation">
+  <div class="intro-half intro-top"></div><div class="intro-half intro-bot"></div>
+  <div class="intro-center">
+    <h1 class="intro-logo" aria-label="JGT"><span>J</span><span>G</span><span>T</span><span>_</span></h1>
+    <div class="intro-line"></div>
+    <p class="intro-sub">iniciando laboratorio</p>
+  </div>
+  <p class="intro-skip">pulsa para entrar</p>
+</div>
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="noise"></div>
+<div class="scanlines"></div>
+<div class="scroll-bar" id="scroll-bar"></div>
+
+<header class="site-header">
+  <a class="brand" href="#inicio" aria-label="JGT, volver al inicio"><span class="brand-mark">J/</span><span class="glitch-hover" data-text="JGT_">JGT<span class="accent">_</span></span></a>
+  <nav aria-label="Navegación principal">
+    <a class="active" href="#inicio">/inicio</a><a href="#juegos">/juegos</a><a href="#mollykao">/mollykao</a><a href="#proyectos">/proyectos</a><a href="#sobre-mi">/sobre-mi</a>
+    <a href="https://github.com/JGT7777" target="_blank" rel="noreferrer">/github ↗</a>
+  </nav>
+  <div class="visit-chip" title="Visitas totales de la web"><span class="status-dot"></span><b id="visit-count">----</b> visitas</div>
+</header>
+
+<main>
+  <section id="inicio" class="hero shell">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot"></span> <span>conexión estable / usuario: JGT7777</span></p>
+      <h1 class="glitch" data-text="Acceso a&#10;JGT">Acceso a<br><em>JGT</em></h1>
+      
+      <p class="hero-text" id="hero-typed" data-h="Juegos, robots, apps y cosas raras. Pasa y juega."></p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#juegos">Jugar ahora <span>▶</span></a>
+        <a class="button button-quiet" href="#proyectos">Ver proyectos <span>↓</span></a>
+      </div>
+    </div>
+    
+    <div class="terminal tilt" aria-label="Estado del laboratorio">
+      <div class="terminal-bar"><span></span><span></span><span></span><b>jgt@lab:~</b></div>
+      <div class="terminal-body">
+        <div>
+        <p><i>01</i> <strong>$ whoami</strong></p><p class="terminal-green">JGT</p>
+        <p><i>02</i> <strong>$ ./estado_actual.sh</strong></p>
+        <p class="terminal-green">[OK] MollyKao en desarrollo</p>
+        <p class="terminal-green">[OK] WorKat casi listo para Google Play</p>
+        <p class="terminal-green">[OK] 4 juegos online</p>
+        <p class="terminal-green">[OK] Venta de impresiones 3D activa</p>
+        <p><i>03</i> <strong>$ _</strong><span class="cursor"></span></p>
+      </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="stats shell reveal" aria-label="Resumen de actividad">
+    <div class="stat"><strong data-count="3">03</strong><span>robots creados</span></div>
+    <div class="stat"><strong data-count="4">04</strong><span>ordenadores vulnerados</span></div>
+    <div class="stat"><strong data-count="1">01</strong><span>móvil vulnerado</span></div>
+    <div class="stat"><strong data-count="7">07</strong><span>apps básicas</span></div>
+    <div class="stat"><strong data-count="4">04</strong><span>juegos online</span></div>
+  </section>
+
+  <section id="juegos" class="section shell">
+    <div class="section-heading reveal">
+      <div><p class="eyebrow">01 / selector de juego</p><h2 class="glitch" data-text="Mis juegos">Mis juegos</h2></div>
+      <p class="section-note">Elige con el ratón o con las flechas ↑ ↓. Pulsa START para jugar.</p>
+    </div>
+    <div class="select reveal" id="select" style="--c:#8dff3f">
+      <ul class="menu" id="menu" aria-label="Lista de juegos">
+        <li><button class="menu-item is-selected" type="button" data-i="0"><span class="arrow">▶</span><span class="m-name">NUMBERY</span><small>PUZZLE</small></button></li>
+        <li><button class="menu-item" type="button" data-i="1"><span class="arrow">▶</span><span class="m-name">JUMPCAT</span><small>PLATAFORMAS</small></button></li>
+        <li><button class="menu-item" type="button" data-i="2"><span class="arrow">▶</span><span class="m-name">CAT GAMBLING</span><small>SUERTE</small></button></li>
+        <li><button class="menu-item" type="button" data-i="3"><span class="arrow">▶</span><span class="m-name">CAT CLICKER</span><small>CLICKER</small></button></li>
+      </ul>
+      <div class="crt" id="crt">
+        <div class="crt-top"><b id="crt-title">NUMBERY</b><span id="crt-genre">PUZZLE</span></div>
+        <div class="crt-screen">
+          <div class="scene is-on" data-scene="0"><div class="num-grid" id="num-grid"></div></div>
+          <div class="scene" data-scene="1"><div class="cat"></div><div class="ground"></div></div>
+          <div class="scene" data-scene="2"><div class="reels"><span>7</span><span>7</span><span>7</span></div></div>
+          <div class="scene" data-scene="3"><div class="orb">◉</div><div class="clicks"><b id="click-count">0</b> clics</div></div>
+        </div>
+        <p class="crt-desc" id="crt-desc"></p>
+        <a class="button button-primary" id="crt-start" href="#" target="_blank" rel="noreferrer">START <span>▶</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="mollykao" class="company shell reveal">
+    <div class="company-copy">
+      <p class="eyebrow">02 / empresa</p>
+      <h2 class="glitch" data-text="MollyKao">MollyKao</h2>
+      <p class="company-sub">La colección</p>
+      <p>Mi empresa y mi proyecto más personal. Entra a la tienda y mira la colección completa.</p>
+      <a class="button button-primary" href="https://jgt7777.github.io/MollyKao/" target="_blank" rel="noreferrer">Abrir MollyKao <span>↗</span></a>
+    </div>
+    <div class="company-visual tilt" aria-hidden="true"><img src="img/MollyKao.jpg" alt="" loading="lazy"></div>
+  </section>
+
+  <section id="proyectos" class="section shell">
+    <div class="section-heading reveal"><div><p class="eyebrow">03 / archivos abiertos</p><h2>Mis cosas<em>:</em></h2></div></div>
+    <div class="project-grid">
+      <article class="project tilt reveal"><div class="project-visual app-visual"><span class="app-symbol">W</span><span class="project-label">BUILD 0.1</span></div><div class="project-content"><p class="project-number">APP MÓVIL / PRÓXIMO</p><h3>WorKat</h3><p>La app que he hecho completa por mi cuenta. Todavía la estoy preparando antes de subirla a Google Play.</p><span class="tag">a punto</span></div></article>
+      <article class="project tilt reveal reveal-delay-1"><div class="project-visual"><img src="img/Impresiones%203D.png" alt="Impresión 3D" loading="lazy"><span class="project-label">LAYER / 03</span></div><div class="project-content"><p class="project-number">IMPRESIÓN 3D / ACTIVO</p><h3>Impresión 3D</h3><p>Diseño y vendo piezas impresas en 3D, capa a capa.</p><a href="https://jgt7777.github.io/MollyKao/" target="_blank" rel="noreferrer">ver la colección <span>↗</span></a></div></article>
+      <article class="project tilt reveal reveal-delay-2"><div class="project-visual"><img src="img/MollyKaoStudio.png" alt="MollyKaoStudio" loading="lazy"><span class="project-label">STUDIO</span></div><div class="project-content"><p class="project-number">ESTUDIO / ACTIVO</p><h3>MollyKaoStudio</h3><p>Mi estudio, donde reúno lo que hago bajo el nombre MollyKao.</p><a href="https://jgt7777.github.io/MollyStudio/" target="_blank" rel="noreferrer">abrir MollyKao Studio <span>↗</span></a></div></article>
+    </div>
+  </section>
+
+  <section id="sobre-mi" class="about shell reveal">
+    <h2>Sobre<br><em>mí.</em></h2>
+    <div class="about-copy"><p>Soy JGT. Programo, monto robots, hago juegos y apps, e imprimo cosas en 3D. Siempre estoy construyendo algo nuevo.</p><p class="quote">$ ./keep_building.exe</p>
+    </div>
+  </section>
+
+  <section class="contact shell reveal">
+    <div><p class="eyebrow">04 / sigue</p><h2>Si quieres ver<br><em>más cosas.</em></h2></div>
+    <div class="contact-links">
+      <a class="contact-link" href="https://github.com/JGT7777" target="_blank" rel="noreferrer" aria-label="Abrir todos mis repositorios de GitHub"><span>Todos mis repositorios</span><b>↗</b></a>
+      <a class="contact-link" href="https://www.youtube.com/@JGT777" target="_blank" rel="noreferrer" aria-label="Abrir mi canal de YouTube"><span>Mi YouTube</span><b>↗</b></a>
+    </div>
+  </section>
+</main>
+
+<footer><p>© 2026 JGT</p><p class="footer-code">VISITAS: <span id="visit-count-footer">----</span> / STATUS: <span>ONLINE</span></p></footer>
+<script src="scroll.js"></script>
+</body>
+</html>
