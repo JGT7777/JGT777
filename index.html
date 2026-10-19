@@ -4,151 +4,150 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="La web de JGT: juegos, MollyKao, WorKat, programas en Python e impresión 3D.">
-<meta name="theme-color" content="#070b0a">
+<meta name="theme-color" content="#0c0716" id="meta-theme">
 <title>JGT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="covers.css">
+<script>
+document.documentElement.classList.add('js');
+try { document.documentElement.dataset.theme = localStorage.getItem('jgt-theme') || 'neon'; }
+catch (e) { document.documentElement.dataset.theme = 'neon'; }
+</script>
 </head>
-<body data-side="hacker">
-<div class="retro-boot" id="retro-boot" role="dialog" aria-label="Elige tu bando">
-  <div class="boot-screen">
-    <p class="boot-brand">JGT//OS <span>v3.0</span></p>
-    <p class="boot-line">BIOS CHECK ............ <b>OK</b></p>
-    <p class="boot-line">MEMORY TEST ........... <b>640K OK</b></p>
-    <p class="boot-line">LOADING GAMES ......... <b>OK</b></p>
-    <div class="boot-progress"><span></span></div>
-    <div class="choice">
-      <p class="choice-q">¿DE QUÉ LADO ESTÁS?</p>
-      <div class="choice-row">
-        <button type="button" class="side-btn side-h" data-side="hacker"><kbd>[H]</kbd><b>HACKER</b><small>Rompe, prueba y vuelve a romper.</small></button>
-        <button type="button" class="side-btn side-s" data-side="security"><kbd>[S]</kbd><b>CIBERSEGURIDAD</b><small>Protege, detecta y responde.</small></button>
-      </div>
-      <p class="boot-prompt">Pulsa H o S, o elige con el ratón. Cambia la web entera.<span class="cursor"></span></p>
-    </div>
-  </div>
-</div>
-<canvas id="rain" aria-hidden="true"></canvas>
-<div class="noise"></div>
-<div class="scanlines"></div>
+<body>
 <div class="scroll-bar" id="scroll-bar"></div>
 
 <header class="site-header">
-  <a class="brand" href="#inicio" aria-label="JGT, volver al inicio"><span class="brand-mark">J/</span><span class="glitch-hover" data-text="JGT_">JGT<span class="accent">_</span></span></a>
+  <a class="brand" href="#inicio" id="brand" aria-label="JGT, volver al inicio">JGT</a>
   <nav aria-label="Navegación principal">
-    <a class="active" href="#inicio">/inicio</a><a href="#juegos">/juegos</a><a href="#mollykao">/mollykao</a><a href="#proyectos">/proyectos</a><a href="#sobre-mi">/sobre-mi</a>
-    <a href="https://github.com/JGT7777" target="_blank" rel="noreferrer">/github ↗</a>
+    <a class="active" href="#inicio">Inicio</a>
+    <a href="#juegos">Juegos</a>
+    <a href="#mollykao">MollyKao</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="https://github.com/JGT7777" target="_blank" rel="noreferrer">GitHub ↗</a>
   </nav>
-  <button class="side-switch" id="side-switch" type="button" aria-label="Cambiar de bando"><span class="for-hacker">[HACKER]</span><span class="for-security">[CIBERSEG]</span> ⇄</button>
-  <div class="visit-chip" title="Visitas totales de la web"><span class="status-dot"></span><b id="visit-count">----</b> visitas</div>
+  <div class="themes" role="group" aria-label="Elegir tema de la web">
+    <button type="button" data-theme="neon" aria-pressed="true"><i></i>Neón</button>
+    <button type="button" data-theme="papel" aria-pressed="false"><i></i>Papel</button>
+    <button type="button" data-theme="chicle" aria-pressed="false"><i></i>Chicle</button>
+  </div>
 </header>
 
 <main>
   <section id="inicio" class="hero shell">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="status-dot"></span> <span class="for-hacker">conexión estable / modo: hacker / usuario: JGT7777</span><span class="for-security">canal cifrado / modo: defensa / usuario: JGT7777</span></p>
-      <h1 class="glitch for-hacker" data-text="Acceso a&#10;JGT">Acceso a<br><em>JGT</em></h1>
-      <h1 class="glitch for-security" data-text="Escudo&#10;JGT">Escudo<br><em>JGT</em></h1>
-      <p class="hero-text" id="hero-typed" data-h="Juegos, robots, apps y cosas raras hechas en Python. Pasa y juega." data-s="Aprendo a proteger lo que construyo: juegos, apps y robots. Pasa y juega."></p>
+      <p class="kicker">Hola, soy JGT</p>
+      <h1>Hago juegos, robots y cosas raras con <mark>código</mark>.</h1>
+      <p class="hero-text">Aquí tienes mis juegos, mi empresa MollyKao, mi app WorKat y todo lo que voy montando con Python y con la impresora 3D.</p>
       <div class="hero-actions">
-        <a class="button button-primary" href="#juegos">Jugar ahora <span>▶</span></a>
-        <a class="button button-quiet" href="#proyectos">Ver proyectos <span>↓</span></a>
+        <a class="btn btn-primary" href="#juegos">Jugar ahora <span>→</span></a>
+        <a class="btn" href="#proyectos">Ver proyectos <span>↓</span></a>
       </div>
     </div>
-    <div class="radar for-security" aria-hidden="true"></div>
-    <div class="terminal tilt" aria-label="Estado del laboratorio">
-      <div class="terminal-bar"><span></span><span></span><span></span><b>jgt@lab:~</b></div>
-      <div class="terminal-body">
-        <div class="for-hacker">
-        <p><i>01</i> <strong>$ whoami</strong></p><p class="terminal-green">JGT</p>
-        <p><i>02</i> <strong>$ ./estado_actual.sh</strong></p>
-        <p class="terminal-green">[OK] MollyKao en desarrollo</p>
-        <p class="terminal-green">[OK] WorKat casi listo para Google Play</p>
-        <p class="terminal-green">[OK] 4 juegos online</p>
-        <p class="terminal-green">[OK] Venta de impresiones 3D activa</p>
-        <p><i>03</i> <strong>$ _</strong><span class="cursor"></span></p>
+    <div class="now-wrap">
+      <div class="now-card">
+        <div class="now-bar"><span>Ahora mismo</span><span class="live"><i></i>en directo</span></div>
+        <ul class="now-list">
+          <li><span class="pill pill-lilac">en desarrollo</span><b>MollyKao</b></li>
+          <li><span class="pill pill-tomato">a punto</span><b>WorKat para Google Play</b></li>
+          <li><span class="pill pill-mint">online</span><b>4 juegos para jugar</b></li>
+          <li><span class="pill pill-sun">activo</span><b>Impresiones 3D a la venta</b></li>
+        </ul>
       </div>
-        <div class="for-security">
-          <p><i>01</i> <strong>$ whoami</strong></p><p class="terminal-green">JGT</p>
-          <p><i>02</i> <strong>$ ./auditoria.sh</strong></p>
-          <p class="terminal-green">[OK] Firewall activo</p>
-          <p class="terminal-green">[OK] MollyKao protegido</p>
-          <p class="terminal-green">[OK] WorKat en pruebas</p>
-          <p class="terminal-green">[OK] 0 amenazas detectadas</p>
-          <p><i>03</i> <strong>$ _</strong><span class="cursor"></span></p>
-        </div>
-      </div>
+      <div class="sticker sticker-a" aria-hidden="true">78<small>programas<br>en Python</small></div>
+      <div class="sticker sticker-b" aria-hidden="true">=^.^=</div>
     </div>
   </section>
 
   <section class="stats shell reveal" aria-label="Resumen de actividad">
     <div class="stat"><strong data-count="3">03</strong><span>robots creados</span></div>
-    <div class="stat"><strong data-count="4">04</strong><span class="for-hacker">ordenadores vulnerados</span><span class="for-security">ordenadores probados</span></div>
-    <div class="stat"><strong data-count="1">01</strong><span class="for-hacker">móvil vulnerado</span><span class="for-security">móvil probado</span></div>
     <div class="stat"><strong data-count="78">78</strong><span>programas en Python</span></div>
     <div class="stat"><strong data-count="7">07</strong><span>apps básicas</span></div>
     <div class="stat"><strong data-count="4">04</strong><span>juegos online</span></div>
   </section>
 
-  <div class="scope" aria-hidden="true">
-    <canvas id="scope"></canvas>
-    <span class="scope-tag">SEÑAL / ENTRADA: JGT_RADIO</span>
-    <span class="scope-tag scope-amp">AMP <b id="scope-amp">00</b></span>
-  </div>
-
   <section id="juegos" class="section shell">
     <div class="section-heading reveal">
-      <div><p class="eyebrow">01 / selector de juego</p><h2 class="glitch" data-text="Mis juegos">Mis juegos</h2></div>
-      <p class="section-note">Elige con el ratón o con las flechas ↑ ↓. Pulsa START para jugar.</p>
+      <div><p class="kicker">01 · Juegos</p><h2>Mis juegos</h2></div>
+      <p class="section-note">Elige con el ratón o con las flechas ↑ ↓ y pulsa Jugar. Se abren en otra pestaña.</p>
     </div>
-    <div class="select reveal" id="select" style="--c:#8dff3f">
+    <div class="select reveal" id="select" style="--c:#8cc4ff">
       <ul class="menu" id="menu" aria-label="Lista de juegos">
-        <li><button class="menu-item is-selected" type="button" data-i="0"><span class="arrow">▶</span><span class="m-name">NUMBERY</span><small>PUZZLE</small></button></li>
-        <li><button class="menu-item" type="button" data-i="1"><span class="arrow">▶</span><span class="m-name">JUMPCAT</span><small>PLATAFORMAS</small></button></li>
-        <li><button class="menu-item" type="button" data-i="2"><span class="arrow">▶</span><span class="m-name">CAT GAMBLING</span><small>SUERTE</small></button></li>
-        <li><button class="menu-item" type="button" data-i="3"><span class="arrow">▶</span><span class="m-name">CAT CLICKER</span><small>CLICKER</small></button></li>
+        <li><button class="menu-item is-selected" type="button" data-i="0"><span class="m-num">01</span><span class="m-name">Numbery</span><small>Puzzle</small></button></li>
+        <li><button class="menu-item" type="button" data-i="1"><span class="m-num">02</span><span class="m-name">Jumpcat</span><small>Plataformas</small></button></li>
+        <li><button class="menu-item" type="button" data-i="2"><span class="m-num">03</span><span class="m-name">Cat Gambling</span><small>Suerte</small></button></li>
+        <li><button class="menu-item" type="button" data-i="3"><span class="m-num">04</span><span class="m-name">Cat Clicker</span><small>Clicker</small></button></li>
       </ul>
       <div class="crt" id="crt">
-        <div class="crt-top"><b id="crt-title">NUMBERY</b><span id="crt-genre">PUZZLE</span></div>
+        <div class="crt-top"><b id="crt-title">Numbery</b><span id="crt-genre">Puzzle</span></div>
         <div class="crt-screen">
-          <div class="scene is-on" data-scene="0"><div class="num-grid" id="num-grid"></div></div>
-          <div class="scene" data-scene="1"><div class="cat"></div><div class="ground"></div></div>
-          <div class="scene" data-scene="2"><div class="reels"><span>7</span><span>7</span><span>7</span></div></div>
-          <div class="scene" data-scene="3"><div class="orb">◉</div><div class="clicks"><b id="click-count">0</b> clics</div></div>
+          <img class="cover" id="crt-cover" alt="" hidden>
+          <div class="cover-fallback" id="crt-fallback"><b id="crt-fb-title">Numbery</b><small>portada próximamente</small></div>
         </div>
         <p class="crt-desc" id="crt-desc"></p>
-        <a class="button button-primary" id="crt-start" href="#" target="_blank" rel="noreferrer">START <span>▶</span></a>
+        <a class="btn btn-primary" id="crt-start" href="#" target="_blank" rel="noreferrer">Jugar <span>→</span></a>
       </div>
     </div>
   </section>
 
   <section id="mollykao" class="company shell reveal">
     <div class="company-copy">
-      <p class="eyebrow">02 / empresa</p>
-      <h2 class="glitch" data-text="MollyKao">MollyKao</h2>
+      <p class="kicker">02 · Mi empresa</p>
+      <h2>MollyKao</h2>
       <p class="company-sub">La colección</p>
       <p>Mi empresa y mi proyecto más personal. Entra a la tienda y mira la colección completa.</p>
-      <a class="button button-primary" href="https://jgt7777.github.io/MollyKao/" target="_blank" rel="noreferrer">Abrir MollyKao <span>↗</span></a>
+      <a class="btn btn-primary" href="https://jgt7777.github.io/MollyKao/" target="_blank" rel="noreferrer">Abrir MollyKao <span>↗</span></a>
     </div>
-    <div class="company-visual tilt" aria-hidden="true"><span class="robot-eye"></span><span class="robot-label">MK-01</span></div>
+    <div class="company-visual" aria-hidden="true">
+      <div class="bot"><i class="bot-antenna"></i><div class="bot-face"><span class="eye"></span><span class="eye"></span></div></div>
+      <span class="company-label">MK-01</span>
+    </div>
   </section>
 
   <section id="proyectos" class="section shell">
-    <div class="section-heading reveal"><div><p class="eyebrow">03 / archivos abiertos</p><h2>Mis cosas:</h2></div></div>
+    <div class="section-heading reveal"><div><p class="kicker">03 · Proyectos</p><h2>Mis cosas:</h2></div></div>
     <div class="project-grid">
-      <article class="project tilt reveal"><div class="project-visual app-visual"><span class="app-symbol">W</span><span class="project-label">BUILD 0.1</span></div><div class="project-content"><p class="project-number">APP MÓVIL / PRÓXIMO</p><h3>WorKat</h3><p>La app que he hecho completa por mi cuenta. Todavía la estoy preparando antes de subirla a Google Play.</p><span class="tag">a punto</span></div></article>
-      <article class="project tilt reveal reveal-delay-1"><div class="project-visual print-visual"><img class="project-cover" src="img/impresion-3d.jpg" alt="Impresión 3D: robot gato impreso en 3D" loading="lazy"><span class="project-label">LAYER / 03</span></div><div class="project-content"><p class="project-number">IMPRESIÓN 3D / ACTIVO</p><h3>Impresión 3D</h3><p>Diseño y vendo piezas impresas en 3D, capa a capa.</p><a href="https://jgt7777.github.io/MollyKao/" target="_blank" rel="noreferrer">ver la colección <span>↗</span></a></div></article>
-      <article class="project tilt reveal reveal-delay-2"><div class="project-visual studio-visual"><img class="project-cover" src="img/mollykao-studio.png" alt="MollyKaoStudio: pantalla de inicio de la app" loading="lazy"><span class="project-label">STUDIO / WEB</span></div><div class="project-content"><p class="project-number">WEB APP / ACTIVO</p><h3>MollyKaoStudio</h3><p>Mi app para organizar el estudio: tareas, exámenes, calendario y una tienda de recompensas.</p><a href="https://jgt7777.github.io/MollyStudio/" target="_blank" rel="noreferrer">abrir MollyKaoStudio <span>↗</span></a></div></article>
+      <article class="project reveal"><div class="project-visual v-app"><span class="app-symbol">W</span></div><div class="project-content"><p class="project-number">App móvil · próximamente</p><h3>WorKat</h3><p>La app que he hecho completa por mi cuenta. Todavía la estoy preparando antes de subirla a Google Play.</p><span class="tag">a punto</span></div></article>
+      <article class="project reveal reveal-delay-1"><div class="project-visual v-print"><span class="cube cube-a"></span><span class="cube cube-b"></span><img class="project-cover" src="img/impresion-3d.jpg" alt="Impresión 3D: robot gato impreso en 3D" loading="lazy" onerror="this.remove()"></div><div class="project-content"><p class="project-number">Impresión 3D · activo</p><h3>Impresión 3D</h3><p>Diseño y vendo piezas impresas en 3D, capa a capa.</p><a href="https://jgt7777.github.io/MollyKao/" target="_blank" rel="noreferrer">Ver la colección ↗</a></div></article>
+      <article class="project reveal reveal-delay-2"><div class="project-visual v-studio"><img class="project-cover" src="img/mollykao-studio.png" alt="MollyKaoStudio: pantalla de inicio de la app" loading="lazy" onerror="this.remove()"></div><div class="project-content"><p class="project-number">Web app · activo</p><h3>MollyKaoStudio</h3><p>Mi app para organizar el estudio: tareas, exámenes, calendario y una tienda de recompensas.</p><a href="https://jgt7777.github.io/MollyStudio/" target="_blank" rel="noreferrer">Abrir MollyKaoStudio ↗</a></div></article>
+    </div>
+  </section>
+
+  <div id="cert-grid" hidden></div>
+
+  <section id="gato" class="oracle shell reveal">
+    <div class="oracle-copy">
+      <p class="kicker">Extra · Sin utilidad real</p>
+      <h2>El gato oráculo</h2>
+      <p>Hazle una pregunta importante. Responde cuando le apetece y casi nunca ayuda.</p>
+      <form class="oracle-form" id="oracle-form" autocomplete="off">
+        <label class="sr-only" for="oracle-q">Tu pregunta para el gato</label>
+        <input id="oracle-q" type="text" maxlength="80" placeholder="¿Compilará a la primera?">
+        <button class="btn btn-primary" type="submit">Preguntar <span>?</span></button>
+      </form>
+    </div>
+    <div class="oracle-cat" id="oracle-cat">
+      <div class="oracle-face" aria-hidden="true">=^.^=</div>
+      <p class="oracle-bubble" id="oracle-answer" aria-live="polite">Haz tu pregunta…</p>
     </div>
   </section>
 
   <section id="sobre-mi" class="about shell reveal">
-    <h2>Sobre<br><em>mí.</em></h2>
-    <div class="about-copy"><p class="for-hacker">Soy JGT. Programo, monto robots, hago juegos y apps, e imprimo cosas en 3D. Siempre estoy construyendo algo nuevo.</p><p class="quote for-hacker">$ ./keep_building.exe</p>
-    <p class="for-security">Soy JGT. Programo, monto robots, hago juegos y apps, e imprimo cosas en 3D. Pruebo cómo se rompen los sistemas para saber cómo protegerlos.</p><p class="quote for-security">$ ./keep_protecting.exe</p></div>
+    <div><p class="kicker">04 · Sobre mí</p><h2>Siempre estoy construyendo algo.</h2></div>
+    <div class="about-copy">
+      <p>Soy JGT. Programo, monto robots, hago juegos y apps, e imprimo cosas en 3D. Casi todo empieza como una idea rara y acaba siendo algo que puedes probar.</p>
+      <ul class="chips" aria-label="Lo que hago">
+        <li>Python</li><li>Robots</li><li>Juegos</li><li>Apps</li><li>Impresión 3D</li>
+      </ul>
+    </div>
   </section>
 
   <section class="contact shell reveal">
-    <div><p class="eyebrow">04 / sigue</p><h2>Si quieres ver<br><em>más cosas.</em></h2></div>
+    <div><p class="kicker">Más cosas</p><h2>Si quieres ver más.</h2></div>
     <div class="contact-links">
       <a class="contact-link" href="https://github.com/JGT7777" target="_blank" rel="noreferrer" aria-label="Abrir todos mis repositorios de GitHub"><span>Todos mis repositorios</span><b>↗</b></a>
       <a class="contact-link" href="https://www.youtube.com/@JGT777" target="_blank" rel="noreferrer" aria-label="Abrir mi canal de YouTube"><span>Mi YouTube</span><b>↗</b></a>
@@ -156,24 +155,8 @@
   </section>
 </main>
 
-<footer><p>© 2026 JGT</p><p class="footer-code">VISITAS: <span id="visit-count-footer">----</span> / MODO: <span class="for-hacker">HACKER</span><span class="for-security">DEFENSA</span> / STATUS: <span>ONLINE</span></p></footer>
+<footer><p>© 2026 JGT</p><p>Hecho a mano, sin plantillas.</p></footer>
 
-<aside class="music-player" id="music-player" aria-label="Reproductor de música">
-  <div class="window-titlebar"><span class="window-icon">♪</span><b>JGT_RADIO.EXE</b><div class="window-controls"><button type="button" id="min-player" aria-label="Minimizar reproductor">_</button></div></div>
-  <div class="player-body">
-    <div class="music-heading"><span class="music-signal"></span><span>JGT RADIO / <b id="music-status">ESPERANDO PISTA</b></span></div>
-    <div class="music-main">
-      <button class="music-button" id="previous-track" type="button" aria-label="Canción anterior">|&lt;</button>
-      <button class="music-button music-play" id="play-track" type="button" aria-label="Reproducir música">▶</button>
-      <button class="music-button" id="next-track" type="button" aria-label="Siguiente canción">&gt;|</button>
-      <div class="music-now-playing"><strong id="track-name">If The Sun Burns Out Tonight (feat. Oli Sykes &amp; Courtney LaPlante).mp3</strong><span id="track-time">00:00 / 00:00</span></div>
-    </div>
-    <input class="music-progress" id="music-progress" type="range" min="0" max="100" value="0" aria-label="Progreso de la canción">
-    <div class="music-wave" id="music-wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="track-list" role="list" aria-label="Lista de canciones"><button class="track active" type="button" data-track="0">01 / If The Sun Burns Out Tonight</button></div>
-  </div>
-</aside>
 <script src="scroll.js"></script>
-<script src="covers.js"></script>
 </body>
 </html>

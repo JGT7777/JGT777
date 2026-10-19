@@ -1,10 +1,5 @@
-/* Portadas de proyectos (tarjetas) */
-.project-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.print-visual .project-cover{object-position:center 72%}
-.studio-visual{background:#0b1020}
-.project-visual .project-label{z-index:1;padding:3px 7px;background:rgba(7,11,10,.78);color:var(--acid)}
-.print-visual .project-label{color:var(--acid)}
-
-/* Portadas de juegos (pantalla del selector) */
-.crt-screen .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.crt-screen .cover[hidden]{display:none}
+/* Portadas de las tarjetas de proyectos */
+.project-visual{position:relative;overflow:hidden}
+.project-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.v-print .project-cover{object-position:center 72%}
+.v-studio{background:#0b1020}
