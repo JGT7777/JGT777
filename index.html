@@ -9,9 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Unbounded:wght@700;800;900&display=swap">
-<link rel="stylesheet" href="style.css">
+<script>if(sessionStorage.getItem("jgt-intro"))document.documentElement.classList.add("no-intro")</script>
+<link rel="stylesheet" href="style.css?v=3">
 </head>
-<body class="intro-lock">
+<body>
 <div class="intro" id="intro" role="presentation">
   <div class="intro-half intro-top"></div><div class="intro-half intro-bot"></div>
   <div class="intro-center">
@@ -29,7 +30,6 @@
     <a class="active" href="#inicio">Inicio</a><a href="#juegos">Juegos</a><a href="#mollykao">MollyKao</a><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a>
     <a href="https://github.com/JGT7777" target="_blank" rel="noreferrer">GitHub ↗</a>
   </nav>
-  <div class="visit-chip" title="Visitas totales de la web"><span class="status-dot"></span><b id="visit-count">----</b> visitas</div>
 </header>
 
 <main>
@@ -123,7 +123,7 @@
   </section>
 </main>
 
-<footer><p>© 2026 JGT</p><p>Visitas: <span id="visit-count-footer">----</span></p></footer>
-<script src="scroll.js"></script>
+<footer><p>© 2026 JGT</p></footer>
+<script src="scroll.js?v=3"></script>
 </body>
 </html>

@@ -1,22 +1,3 @@
-/* ===== Visitas globales (Abacus, gratis). Suma 1 por sesión. ===== */
-const countEls = [document.querySelector('#visit-count'), document.querySelector('#visit-count-footer')];
-const showVisits = (n) => countEls.forEach((el) => { el.textContent = String(n).padStart(4, '0'); });
-(async () => {
-    const cached = Number(localStorage.getItem('jgt-visits'));
-    if (cached) showVisits(cached);
-    const first = !sessionStorage.getItem('jgt-counted');
-    try {
-        const r = await fetch(`https://abacus.jasoncameron.dev/${first ? 'hit' : 'get'}/jgt7777-web/visitas`);
-        if (!r.ok) throw new Error(r.status);
-        const { value } = await r.json();
-        if (first) sessionStorage.setItem('jgt-counted', '1');
-        localStorage.setItem('jgt-visits', value);
-        showVisits(value);
-    } catch {
-        if (!cached) countEls.forEach((el) => { el.textContent = 'N/D'; });
-    }
-})();
-
 /* ===== Reveal, contadores, scroll y nav ===== */
 function countUp(el) {
     const target = Number(el.dataset.count), start = performance.now();
@@ -109,7 +90,7 @@ function endIntro() {
     if (introDone) return;
     introDone = true;
     intro.classList.add('is-leaving');
-    document.body.classList.remove('intro-lock');
+    document.body.classList.add('intro-done');
     document.body.classList.add('burst');
     setTimeout(() => document.body.classList.remove('burst'), 400);
     sessionStorage.setItem('jgt-intro', '1');
@@ -117,7 +98,6 @@ function endIntro() {
 }
 if (sessionStorage.getItem('jgt-intro')) {
     intro.remove();
-    document.body.classList.remove('intro-lock');
 } else {
     const introTimer = setTimeout(endIntro, matchMedia('(prefers-reduced-motion: reduce)').matches ? 600 : 2900);
     const skip = () => { clearTimeout(introTimer); endIntro(); };
